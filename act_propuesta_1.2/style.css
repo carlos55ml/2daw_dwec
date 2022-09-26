@@ -1,0 +1,20 @@
+body {
+    background-color: darkgrey;
+}
+
+.center {
+    text-align: center;
+}
+.betis {
+    background-color: #09ff00;
+}
+
+.grande {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 175%;
+}
+
+p::selection {
+    color: #09ff00;
+    background-color: white;
+}
