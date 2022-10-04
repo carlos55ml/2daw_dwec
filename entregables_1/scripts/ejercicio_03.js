@@ -1,25 +1,26 @@
 const correctButtons = document.getElementsByClassName("correctButton")
 const wrongButtons = document.getElementsByClassName("wrongButton")
 
-const preguntas = document.getElementsByClassName("preguntas")
-
 function correct(qId) {
-    preguntas[qId].style.backgroundColor = "green";
+    const targetQuestion = document.getElementById(qId)
+    targetQuestion.style.backgroundColor = "green"
+    console.log(qId + " Correcto!")
 }
 
 function wrong(qId) {
-    preguntas[qId].style.backgroundColor = "red";
+    const targetQuestion = document.getElementById(qId)
+    targetQuestion.style.backgroundColor = "red"
+    console.log(qId + " Incorrecto!")
 }
 
 for (let i = 0; i < correctButtons.length; i++) {
-    correctButtons[i].addEventListener("click", function() {
-        console.log("CORRECT! " + i)
-        correct(i)
+    correctButtons[i].addEventListener("click", function () {
+        correct(correctButtons[i].value)
     })
 }
+
 for (let i = 0; i < wrongButtons.length; i++) {
-    wrongButtons[i].addEventListener("click", function() {
-        console.log("WRONG! " + i)
-        wrong(i)
+    wrongButtons[i].addEventListener("click", function (){
+        wrong(wrongButtons[i].value)
     })
 }
