@@ -5,15 +5,15 @@ const botonRuso = document.getElementById("saludoRuso")
 const parrafoSaludo = document.getElementById("Saludo")
 
 function saludoEs() {
-    parrafoSaludo.innerHTML = `<p id="Saludo" style="color: #debd00;">Hola! Bienvenido a la pagina.</p>`
+    console.log(`Hola! Bienvenido a la pagina.`)
 }
 
 function saludoEn() {
-    parrafoSaludo.innerHTML = `<p id="Saludo" style="color: blue;">Hello! Welcome to the page.</p>`
+    console.log(`Hello! Welcome to the page.`)
 }
 
 function saludoRu() {
-    parrafoSaludo.innerHTML = `<p id="Saludo" style="color: red;">Привет! Добро пожаловать на страницу.</p>`    
+    console.log(`Привет! Добро пожаловать на страницу.`)
 }
 
 botonEspana.onclick = () => {saludoEs()}
