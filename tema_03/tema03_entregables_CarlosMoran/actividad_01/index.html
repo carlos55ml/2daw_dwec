@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 1</title>
+</head>
+
+<body>
+  <h1>Actividad 1 - Carlos Moran</h1>
+  <p><i>Basandote en el codigo expuesto en este apartado, crea tu propio cronometro. (libro pag. 68)</i></p>
+  <div id="result">
+    <label for="crono">Cronometro: </label>
+    <input type="text" name="crono" id="crono" value="0:00::00" disabled>
+    <button id="startCrono">Iniciar crono.</button>
+    <button id="resetCrono">Reiniciar crono.</button>
+  </div>
+  <script>
+    // declaracion de constantes. Elementos
+    const cronoBox = document.getElementById('crono')
+    const btn_startCrono = document.getElementById('startCrono')
+    const btn_resetCrono = document.getElementById('resetCrono')
+
+    // declaracion de variables
+    let crono
+    let cronoRunning = false
+    let centesimas = 0
+    let segundos = "00"
+    let minutos = "0"
+
+    /** 
+     * Funcion run()
+     * Funcion principal del cronometro. Se debe ejecutar en setInterval(run, 10)
+     * 
+     * Cuenta en centesimas, y comprueba si llega al segundo, y al minuto, y cambia el valor del cronometro acorde con la cuenta
+     */
+    function run() {
+      if (centesimas < 99) {
+        centesimas++;
+        if (centesimas < 10) centesimas = "0" + centesimas;
+      }
+      if (centesimas == 99) centesimas = -1;
+      if (centesimas == 0) {
+        segundos++;
+        if (segundos < 10) segundos = "0" + segundos;
+      }
+      if (segundos > 59 ) {
+        segundos = "00"
+        minutos++
+      }
+      cronoBox.value = `${minutos}:${segundos}::${centesimas}`
+    }
+
+    /**
+     * Para el cronometro, parando el interval y cambiando el valor de los botones para mostrar las acciones correctas
+      */
+    function stop() {
+      clearInterval(crono)
+      cronoRunning = !cronoRunning;
+      btn_startCrono.innerHTML = "Iniciar crono."
+    }
+
+    /**
+     * Reinicia el cronometro, poniendo los valores a 0, cambiando el texto de los botones y del mismo cronometro.
+     * Para el interval para que el cronometro no siga andando.
+      */
+    function resetCrono() {
+      clearInterval(crono)
+      centesimas = 0
+      segundos = "00"
+      minutos = "0"
+      cronoRunning = false
+
+      btn_startCrono.innerHTML = "Iniciar crono."
+      cronoBox.value = `0:00::00`
+
+    }
+
+    /**
+     * Para utilizar un solo boton para iniciar y parar, se hace una variable de control (cronoRunning) y se hace la comprobacion en el click.
+     * Si no esta andando el cronometro, inicia el intervalo y cambia el valor del boton de inicio. Si SI esta andando, ejecuta la funcion de parar.
+     */
+    btn_startCrono.addEventListener('click', () => {
+      if (!cronoRunning) {
+        crono = setInterval(run, 10)
+        cronoRunning = !cronoRunning
+        btn_startCrono.innerHTML = "Parar crono."
+      } else {
+        stop();
+      }
+    })
+
+    /**
+     * Boton de reinicio del cronometro para ponerlo a 0.
+     * Ejecuta la funcion resetCrono()
+     */
+    btn_resetCrono.addEventListener('click', () => {
+      resetCrono()
+    })
+  </script>
+</body>
+
+</html>
