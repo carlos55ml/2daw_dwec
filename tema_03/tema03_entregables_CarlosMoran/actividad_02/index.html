@@ -13,6 +13,8 @@
   <div>
     <label for="nombre">Introduce tu nombre: </label>
     <input type="text" name="nombre" id="nombreInput">
+    <label for="apellido">Introduce tu apellido: </label>
+    <input type="text" name="apellido" id="apellidoInput">
     <br>
     <button id="saveCookie">Guardar en cookie.</button>
     <button id="seeCookie">Ver guardado.</button>
@@ -21,11 +23,39 @@
 
   <script>
     const nombreInput = document.getElementById('nombreInput')
+    const apellidoInput = document.getElementById('apellidoInput')
     const btn_saveCookie = document.getElementById('saveCookie')
     const btn_seeCookie = document.getElementById('seeCookie')
     const btn_deleteCookie = document.getElementById('deleteCookie')
 
-    
+    function setCookie(c_name, c_value, exdays) {
+      var exdate = new Date();
+      exdate.setDate(exdate.getDate() + exdays);
+      document.cookie = encodeURIComponent(c_name)
+        + "=" + encodeURIComponent(c_value)
+        + (!exdays ? "" : "; expires=" + exdate.toUTCString());
+      ;
+    }
+
+    btn_saveCookie.onclick = () => {
+      const nombre = nombreInput.value
+      const apellido = apellidoInput.value 
+      if (!nombre || !apellido) {
+        alert("Rellena todos los campos para poder guardar!")
+        return
+      }
+      setCookie("user", nombre, 1)
+      setCookie("surname", apellido, 1)
+    }
+
+    btn_seeCookie.onclick = () => {
+      alert(document.cookie)
+    }
+
+    btn_deleteCookie.onclick = () => {
+      document.cookie = "user=; max-age=0"
+      document.cookie = "surname=; max-age=0"
+    }
   </script>
 </body>
 
