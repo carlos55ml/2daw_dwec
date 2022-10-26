@@ -1,13 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Actividad 3</title>
 </head>
+
 <body>
   <h1>Actividad 3 - Carlos Moran</h1>
-  
+  <p><i>Teniendo en cuenta el código expuesto en este apartado, crea una función recursiva
+      que muestre la sucesión de Fibonacci. Comprueba en un navegador que la función
+      visualiza correctamente la secuencia deseada.</i></p>
+
+  <div id="root">
+    <p>Introduce un numero y pulsa calcular para calcular la sucesion de Fibonacci con tantos valores como el numero que
+      introduzcas</p>
+    <label for="num">Introduce un numero: </label>
+    <input type="number" name="num" id="numInput">
+    <button id="calcBtn">Calcular</button>
+    <p>Resultado: <span id="result"></span></p>
+  </div>
+
+  <script>
+    const calcBtn = document.getElementById('calcBtn')
+    const resultBox = document.getElementById('result')
+    const numInput = document.getElementById('numInput')
+    
+    
+    function fib(n) {
+      if (n < 2) {
+        return n;
+      } else {
+        return fib(n-1) + fib(n-2)
+      }
+    }
+
+    function calcFib(times) {
+      for (let i = 0; i < times; i++) {
+        resultBox.innerHTML += " "+fib(i)
+      }
+    }
+
+    calcBtn.onclick = () => {
+      resultBox.innerHTML = ""
+      calcFib(numInput.value)
+    }
+  </script>
 </body>
+
 </html>
