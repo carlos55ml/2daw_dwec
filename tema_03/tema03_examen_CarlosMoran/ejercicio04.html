@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 5</title>
+</head>
+
+<body>
+  <h1>Ejercicio 4 - Carlos Moran </h1>
+  <p><i>Antonio está mostrando los mensajes relativos a la Navidad depurando código y utili-
+      zando funciones con string: Ten en cuenta la web anterior, pero sin que realice lo que Antonio el programador
+      desea. Échale una mano y modifica el código para que muestre correctamente todos
+      los mensajes relativos a las Navidades.</i></p>
+  <hr>
+  <div id="root">
+    <ul id="result"></ul>
+  </div>
+  <script>
+    // declaracion de elementos
+    const list = document.querySelector('ul#result');
+    list.innerHTML = "";
+    var saludos = [
+      '¡Feliz cumpleaños!',
+      'Feliz navidades a todos',
+      'Te deseo una feliz navidad',
+      'En Navidades nos vamos de fiesta',
+      'Pasa un buen fin de semana'
+    ];
+
+    /**
+     * bucle forEach sobre saludos para coger cada elemento, ahorrandonos el for clasico
+     * element v - el valor que estamos usando en ese momento
+     */
+    saludos.forEach(v => {
+      // pasamos el valor a minusculas para no tener que encadenar condiciones. comprobamos si contiene la palabra navidad
+      if (v.toLowerCase().indexOf('navidad') !== -1) {
+        var listItem = document.createElement('li'); // si la contiene, la añadimos a un nuevo elemento de la lista
+        listItem.textContent = v; // asignamos el valor al nuevo elemento
+        list.appendChild(listItem); // creamos el elemento como hijo de la lista.
+      }
+    });
+  </script>
+</body>
+
+</html>

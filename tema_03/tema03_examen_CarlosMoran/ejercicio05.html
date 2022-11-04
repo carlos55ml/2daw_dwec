@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 5</title>
+</head>
+
+<body>
+  <h1>Ejercicio 5 - Carlos Moran</h1>
+  <p><i>Repite el ejercicio 4, pero consiguiendo que no salga ningún mensaje que contenga
+      la palabra fiesta</i></p>
+  <hr>
+  <div>
+    <ul id="result"></ul>
+  </div>
+
+  <script>
+    // declaracion de elementos
+    const list = document.querySelector('ul#result');
+    list.innerHTML = "";
+    var saludos = [
+      '¡Feliz cumpleaños!',
+      'Feliz navidades a todos',
+      'Te deseo una feliz navidad',
+      'En Navidades nos vamos de fiesta',
+      'Pasa un buen fin de semana'
+    ];
+
+    /**
+     * bucle forEach sobre saludos para coger cada elemento, ahorrandonos el for clasico
+     * element v - el valor que estamos usando en ese momento
+     */
+    saludos.forEach(v => {
+      // pasamos el valor a minusculas para no tener que encadenar condiciones. comprobamos si contiene la palabra navidad, y que no contenga la palabra fiesta
+      if (v.toLowerCase().indexOf('navidad') !== -1 && !v.includes("fiesta")) {
+        var listItem = document.createElement('li'); // si la contiene, la añadimos a un nuevo elemento de la lista
+        listItem.textContent = v; // asignamos el valor al nuevo elemento
+        list.appendChild(listItem); // creamos el elemento como hijo de la lista.
+      }
+    });
+
+
+  </script>
+</body>
+
+</html>
