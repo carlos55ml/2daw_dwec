@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 2</title>
+</head>
+
+<body>
+  <h1>Ejercicio 2 - Carlos Moran</h1>
+  <p><i>Borrando atributos de un objeto: En el ejemplo anterior, ¿se puede borrar un atributo con la siguiente
+      sentencia?:</i>
+    <code>delete elmio.matrícula;</code>Crea un programa que pruebe si esto es posible
+  </p>
+  <hr>
+  <div>
+    <p><b>Revisa la consola para ver los resultados.</b></p>
+    <p>En el primer intento ambos objetos estan igual. Esto es por que estamos intentando borrar el atributo
+      "matricula", que no existe
+      en el objeto. Sin embargo, si intentamos borrar el color, si que vemos cambios.
+    </p>
+  </div>
+
+  <script>
+    /**
+* Funcion coche - Crea un objeto con los atributos indicados
+* @param {*} modelo 
+* @param {*} color 
+* @param {*} kms 
+* @param {*} combustible 
+*/
+    function coche(modelo, color, kms, combustible) {
+      this.modelo = modelo;
+      this.color = color;
+      this.kms = kms;
+      this.combustible = combustible;
+    }
+
+    /**
+     * Creamos dos instancias de coche y lo guardamos en distintas
+     * variables. Cada uno con valores distintos
+     */
+    var elmio = new coche("mercedes e330", "negro", 120000, "diesel")
+    var eltuyo = new coche("bmw 318", "blanco", 210000, "gasolina")
+
+    // Mostramos ambos objetos por consola
+    console.log("Antes de borrar: \nel mio: ", elmio, "el tuyo: ", eltuyo)
+
+    // Intentamos borrar el atributo "matricula" de "elmio"
+    delete elmio.matricula
+
+    // mostramos el resultado
+    console.log("DESPUES de borrar: \nel mio: ", elmio, "el tuyo: ", eltuyo)
+
+    // repetimos el proceso pero borrando un atributo que si exista en el objeto
+    console.log("Ahora borraremos un atributo que si exista en el objeto")
+
+    console.log("Antes de borrar: \nel mio: ", elmio, "el tuyo: ", eltuyo)
+
+    delete elmio.color
+
+    console.log(`DESPUES de borrar ("color" en "elmio"): \nel mio: `, elmio, "el tuyo: ", eltuyo)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 1</title>
+</head>
+
+<body>
+  <h1>Ejercicio 1 - Carlos Moran</h1>
+  <p><i> Lleva a cabo un ejercicio que muestre un enlace a Myfpschool.com si sacando un número de forma aleatoria es
+      menor que 0,5.
+      En caso contrario, que salude con buenos días (antes de las 15:00) o buenas tardes dependiendo de la hora en la
+      que se cargue
+      la página. Utiliza el método Math.random() y el atributo document.getElementById(“id”).innerHTML para realizar el
+      ejercicio</i></p>
+  <hr>
+
+  <div id="root">
+    <button id="activarApp">Ejecuta la app.</button>
+    <p>Quiero decirte que: <span id="result"></span></p>
+  </div>
+
+  <script>
+    // declaracion de elementos
+    const btnActivarApp = document.getElementById('activarApp')
+    const resultBox = document.getElementById('result')
+
+    /**
+    * Funcion salute.
+    * Saluda buenos dias, o buenas tardes en funcion de la hora en la que la funcion sea ejecutada
+    */
+    function salute() {
+      var date = new Date(Date.now())
+      var hour = date.getHours()
+      var message = ""
+      if (hour < 15 && hour > 8) {
+        message = "Buenos Dias."
+      } else {
+        message = "Buenas Tardes"
+      }
+      resultBox.innerHTML = `${message}`
+    }
+
+    /**
+    * Funcion showLink.
+    * Muestra un enlace en el elemento result
+    */
+    function showLink() {
+      resultBox.innerHTML = `<a href="http://myfpschool.com">Myfpschool.com</a>`
+    }
+
+    /**
+     * Funcion tryApp.
+     * Cuando es invocada, genera un numero aleatorio. Si es menor que 0.5, ejecuta showLink, si no, ejecuta salute.
+     */
+    function tryApp() {
+      var num = Math.random()
+      num < 0.5 ? showLink() : salute()
+    }
+
+    /**
+     * Se añade el evento onclick para ejecutar la aplicacion
+     */
+    btnActivarApp.onclick = () => {
+      tryApp()
+    }
+  </script>
+</body>
+
+</html>

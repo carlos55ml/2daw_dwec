@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 9</title>
+</head>
+
+<body>
+  <h1>Ejercicio 9 - Carlos Moran</h1>
+  <p><i>Teniendo un array muy grande con elementos de la siguiente estructura... Crea un texto y un botón que ponga
+      que muestre el CP y el nombre de
+      buscar
+      la ciudad que coincida o contenga el texto del campo creado. No importan las ma-
+      yúsculas y minúsculas en la búsqueda.</i></p>
+  <hr>
+  <div id="root">
+    <p id="lista"></p>
+    <label for="ciudad">Introduce una ciudad para buscar su CP: </label>
+    <input type="text" name="ciudad" id="ciudadInput">
+    <button id="btnBuscar">Buscar</button>
+    <p>Resultado: <span id="result"></span></p>
+  </div>
+
+  <script>
+    // declaramos variables y elementos
+    const btnBuscar = document.getElementById('btnBuscar')
+    const ciudadInput = document.getElementById('ciudadInput')
+    const result = document.getElementById('result')
+    const lista = document.getElementById('lista')
+
+    var found = false
+
+    // creamos el array y lo mostramos en la pagina
+    const ciudades = ["41620:Marchena", "40400:Sevilla", "08080:Barcelona", "41000:Osuna", "50100:Madrid"]
+    lista.innerHTML = `Contenido de la lista: ${ciudades.toString()}`
+
+    /**
+     * Evento onclick del boton para ejecutar la busqueda
+     * @returns 
+     */
+    btnBuscar.onclick = () => {
+      // nuestro objetivo es lo que haya en el campo de busqueda
+      const target = ciudadInput.value
+
+      // recorremos el array
+      for (const k in ciudades) {
+        found = false
+        // si esta en algunos de los elementos, pasado a minuscula
+        if (ciudades[k].toLowerCase().includes(target.toLowerCase())) {
+          // separamos la ciudad y el cp
+          const cp = ciudades[k].split(":")[0]
+          const ciudad = ciudades[k].split(":")[1]
+          // lo mostramos en pantalla
+          result.innerHTML = `El Codigo Postal de <b>${ciudad}</b> es <b>${cp}</b>`
+          // declaramos que ha sido encontrado
+          found = true
+          // retornamos para no seguir el bucle
+          return
+        }
+      }
+      /**
+       * Si no ha sido encontrado, mostraremos que no hay resultado
+       */
+      if (!found) {
+        result.innerHTML = `${target} no se encuentra en la lista..`
+      }
+    }
+  </script>
+</body>
+
+</html>

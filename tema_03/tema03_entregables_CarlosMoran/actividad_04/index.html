@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 4</title>
+  <style>
+    input {
+      width: 30%;
+    }
+    span {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <h1>Actividad 4 - Carlos Moran</h1>
+  <p><i>Teniendo en cuenta el código expuesto en este apartado, crea una página web en la que
+    se compare el funcionamiento de las funciones encodeURI() y encodeURIComponent().</i></p>
+    <hr>
+    <p>URL de ejemplo: <i>https://www.amazon.es/s?k=camara+de+video&link_code=qs&sourceid=Mozilla-search&tag=mozillaspain-21</i></p>
+    <div>
+      <label for="urlToEncode">Introduce una URL para codificar: </label>
+      <input type="text" name="urlToEncode" id="urlToEncodeInput">
+      <button id="btnEncode">Codificar</button>
+      <br>
+      <p><b>Resultado encodeURI:</b> <span id="resultEncodeUri"></span></p>
+      <p><b>Resultado encodeURIComponent:</b> <span id="resultadoEncodeUriComponent"></span></p>
+    </div>
+    <hr>
+    <div>
+      <label for="urlToDecode">Introduce alguna URL codificada en uri para decodificar (puedes usar los resultados de arriba): </label>
+      <input type="text" name="urlToDecode" id="urlToDecodeInput">
+      <button id="btnDecode">Decodificar</button>
+      <br>
+      <p><b>Resultado decodeURI:</b> <span id="resultDecodeUri"></span></p>
+      <p><b>Resultado decodeURIComponent:</b> <span id="resultadoDecodeUriComponent"></span></p>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

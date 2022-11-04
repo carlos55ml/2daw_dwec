@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 10</title>
+</head>
+
+<body>
+  <h1>Ejercicio 10 - Carlos Moran</h1>
+  <p><i> Elabora una página web que cree dos cookies con el nombre y el contenido que con-
+      sideres oportuno</i></p>
+  <hr>
+
+  <div>
+    <label for="name">Introduce tu nombre: </label>
+    <input type="text" name="name" id="nameInput">
+    <br>
+    <label for="edad">Introduce tu edad: </label>
+    <input type="text" name="edad" id="edadInput">
+    <br>
+    <button id="create">Crear cookies</button>
+    <button id="deleteCookies">Borrar todas las cookies</button>
+  </div>
+
+  <script>
+    // Crear cookies
+    document.getElementById('create').onclick = () => {
+      const nombre = document.getElementById('nameInput').value
+      const edad = document.getElementById('edadInput').value
+
+      // Si los datos estan introducidos, añadir las cookies
+      if (!nombre || !edad) {
+        alert("Faltan datos por rellenar")
+      } else {
+        setCookie("name", nombre)
+        setCookie("edad", edad)
+        alert("Cookies guardadas.")
+      }
+    }
+
+    // Borra todas las cookies
+    document.getElementById('deleteCookies').onclick = () => {
+      document.cookie = "name=; max-age=0"
+      document.cookie = "edad=; max-age=0"
+      alert("Cookies eliminadas.")
+    }
+
+    /**
+     * Función para crear una cookie
+     * 
+     * @param {string} name Nombre de la cookie
+     * @param {string} value Valor de la cookie
+     * @param {int|float} expireDays Días de vida de la cookie
+     */
+    function setCookie(name, value, expireDays = 1) {
+      const date = new Date()
+      date.setTime(date.getTime() + (expireDays * 24 * 60 * 60 * 1000))
+      let expires = "expires=" + date.toUTCString()
+      document.cookie = name + "=" + value + ";" + expires
+    }
+  </script>
+</body>
+
+</html>

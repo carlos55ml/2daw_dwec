@@ -1,22 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ejercicio 6</title>
 </head>
+
 <body>
   <h1>Ejercicio 6 - Carlos Moran</h1>
   <p><i> Mariano tiene un problema con la siguiente página web, cuando quiere mostrar los
-    nombres de los equipos correctamente, le sale una serie de números que no desea.
-    Por ejemplo</i></p>
+      nombres de los equipos correctamente, le sale una serie de números que no desea.
+      Por ejemplo</i></p>
 
-    <div id="root">
-      <ul id="listaCompleta"></ul>
-      <ul id="result"></ul>
-    </div>
+  <div id="root">
+    <h3>Lista con fallos: </h3>
+    <ul id="listaCompleta"></ul>
+    <h3>Lista correcta: </h3>
+    <ul id="result"></ul>
+  </div>
 
-    <script src="./script.js"></script>
+  <script>
+    const listaCompleta = document.getElementById('listaCompleta')
+    const list = document.querySelector('ul#result');
+    listaCompleta.innerHTML = ""
+    list.innerHTML = "";
+    var equipos = [
+      'MAN675847583748sjt567654;Manchester United',
+      'RMD576746573fhdg4737dh4;Real Madrid',
+      'LIV5hg65hd737456236dch46dg4;Liverpool FC',
+      'SEV4f65hf75f736463;Sevilla FC',
+      'BAR5767ghtyfyr4536dh45dg45dg3;Barcelona FC'
+    ];
+
+    // NOTA para MARIANO: No era mas facil guardar los equipos sin esos caracteres raros? 
+    // que significan? de donde vienen? por que se guarda en todo el medio? son realmente necesarios?
+    // Por favor, habla con el project manager cuanto antes.
+
+    equipos.forEach(v => {
+      var listItem = document.createElement('li')
+      listItem.textContent = v
+      listaCompleta.appendChild(listItem)
+    });
+
+    equipos.forEach(v => {
+      var alias = v.match("(^[A-Z]{3})")[0]
+      var name = v.substring(v.indexOf(";") + 1)
+      var listItem = document.createElement('li')
+      listItem.textContent = `${alias};${name}`
+      list.appendChild(listItem)
+    })
+
+
+  </script>
 </body>
+
 </html>

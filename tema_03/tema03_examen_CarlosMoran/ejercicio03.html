@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 3</title>
+</head>
+
+<body>
+  <h1>Ejercicio 3 - Carlos Moran</h1>
+  <p><i>Realiza un script que, cuando pulse un botón, te diga la última posición de una deter-
+      minada palabra dentro de una frase. El script solamente se ejecutará cuando se pulse
+      el botón.
+      Imagínate que la palabra o substring (no tiene por qué ser una palabra) se repite
+      dentro del texto varias veces. Con el método LastIndexOf(), puede conocerse la posi-
+      ción de la última ocurrencia</i></p>
+  <hr>
+
+  <div>
+    <p id="fraseInicial"></p>
+    <label for="word">Introduce la palabra a buscar: </label>
+    <input type="text" name="word" id="wordInput">
+    <button id="exec">Ejecuta la busqueda</button>
+    <p><b>Resultado:</b> <span id="result"></span></p>
+  </div>
+
+  <script>
+    // Declaramos variables y elementos
+    const result = document.getElementById('result')
+    const fraseInicial = document.getElementById('fraseInicial')
+    const wordInput = document.getElementById('wordInput')
+
+    // guardamos la frase en una variable para utilizarla en el script
+    const frase = 'En un lugar de la Mancha, de cuyo nombre no quiero acordarme, ' +
+      'no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero ' +
+      'adarga antigua, rocín flaco y galgo corredor. Cuando se mancha tiene cuyo nombre...'
+
+    fraseInicial.innerHTML = frase // insertamos la frase en la pagina
+
+    /**
+     * Creamos un array. cada palabra de la frase ocupara una posicion. puntos y comas
+     * seran eliminados mediante una REGEX.
+     */
+    const fraseArray = frase.toLowerCase().replace(/(\.+|,+)/g, "").split(" ")
+    console.log(fraseArray)
+    /**
+     * Funcion principal de la app
+     */
+    function appExec() {
+      const word = wordInput.value // obtenemos la palabra a buscar del campo de texto
+      /**
+       * Si la palabra, que se pasa a minuscula existe en el array
+       */
+      if (fraseArray.indexOf(word.toLowerCase()) !== -1) {
+        // guardamos en una variable el ultimo indice donde aparece la palabra, y sumamos 1 para que tenga sentido al contar
+        var i = fraseArray.lastIndexOf(word) + 1
+        result.innerHTML = `Ultima ocurrencia en la palabra numero ${i} de la frase`
+      } else {
+        result.innerHTML = `La palabra no existe en la frase`
+      }
+
+    }
+
+    // cuando se pulsa el boton, se ejecuta la app
+    document.getElementById('exec').onclick = () => {
+      appExec()
+    }
+  </script>
+</body>
+
+</html>

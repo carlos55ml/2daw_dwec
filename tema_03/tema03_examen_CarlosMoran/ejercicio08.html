@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 8</title>
+</head>
+
+<body>
+  <h1>Ejercicio 8 - Carlos Moran</h1>
+  <p><i>Benito no sabe si el código siguiente funciona ni para qué sirve:</i><sub>Ni yo Benito, ni yo...</sub></p>
+  <code>
+    var perrillos = ["Rocket", "Flash", "Bella", "Slugger"];<br>
+    console.log(perrillos.toString());<br>
+    var ciudades = 'Manchester,London,Liverpool,Birmingham,Leeds,Carlisle';<br>
+    perrillos = ciudades.split(',');<br>
+    console.log(perrillos.toString());<br>
+</code>
+  <hr>
+  <p><b>Consulta la consola para ver los resultados</b></p>
+
+  <script>
+    var perrillos = ["Rocket", "Flash", "Bella", "Slugger"];
+    var copiaPerrillos = [...perrillos]
+    console.log(perrillos.toString());
+    var ciudades = 'Manchester,London,Liverpool,Birmingham,Leeds,Carlisle';
+    perrillos = ciudades.split(',');
+    console.log(perrillos.toString());
+
+    console.log("\nARREGLOS A PARTIR DE AQUI\n")
+
+    /**
+     * Apartado a: 
+     * Explícale si funciona correctamente (corrige lo que esté mal) y realiza un procedi-
+      miento que elimine del array perrillos todos los elementos que contengan una C
+      sin importar si está en mayúscula o minúscula
+     */
+
+    for (const k in copiaPerrillos) {
+      if (copiaPerrillos[k].toLowerCase().includes('c')) {
+        copiaPerrillos.splice(k, 1)
+      }
+    }
+    console.log("Apartado A: Perrillos sin C: ", copiaPerrillos)
+
+    /**
+     * Apartado B: 
+     * Modifica el programa para que perrillos contenga los nombres de los perros y las
+      ciudades (ambos)
+     */
+    var perrillosB = ["Rocket", "Flash", "Bella", "Slugger"];
+    var ciudadesB = 'Manchester,London,Liverpool,Birmingham,Leeds,Carlisle';
+    perrillosB = perrillosB.concat(ciudadesB.split(','))
+
+    console.log("\nApartado B: perrillos contiene perrillos y ciudades", perrillosB)
+
+    /**
+     * Apartado C: Comprobar si funciona el siguiente codigo
+     */
+    console.log("Apartado C: antes de ejecutar: ", perrillosB.toString())
+    perrillosB.unshift('Estepona')
+    console.log("Apartado C: DESPUES de ejecutar: ", perrillosB.toString())
+
+  </script>
+</body>
+
+</html>
