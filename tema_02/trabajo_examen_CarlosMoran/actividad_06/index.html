@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 6</title>
+  <style>
+    div#root {
+      display: flex;
+    }
+
+    div#root>div {
+      margin: auto;
+    }
+
+    #controlPrimer {
+      width: 200px;
+      height: 200px;
+      border: 5px red groove;
+      background-color: lightcoral;
+
+    }
+
+    #subPrimer {
+      width: 75px;
+      height: 75px;
+      background-color: lightgreen;
+      border: 3px blue dashed;
+      position: relative;
+      top: 20%;
+      left: 25%;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Actividad 6 - Carlos Moran</h1>
+  <p><i>JavaScript puede manejar eventos en una página web para conocer, por ejemplo,
+      cuándo el ratón pasa por encima de un elemento. Pon un ejemplo de uso para cada
+      uno de los siguientes eventos:</i></p>
+  <hr>
+  <div id="root">
+    <div id="primer">
+      <h3>Ejemplo: OnMouseOver</h3>
+      <p>Pasa el raton por la zona roja o su interior verde.</p>
+      <p>El espia dice: <b><span id="resultPrimer"></span></b></p>
+      <div id="controlPrimer" onmouseover="mouseOverPrimer()">
+        Padre
+        <div id="subPrimer">Hijo</div>
+      </div>
+    </div>
+
+    <div id="segundo">
+      <h3>Ejemplo: OnMouseOut</h3>
+      <p>Pasa el raton sobre la imagen.</p>
+      <p>Steve Jobs dice: <b><span id="resultSegundo"></span></b></p>
+      <figure>
+        <img src="https://i.imgur.com/r1jSgcF.jpeg" alt="Calvo Apple" onmouseover="mouseOverSegundo()"
+          onmouseout="mouseOutSegundo()">
+      </figure>
+    </div>
+    <div id="tercero" style="flex-direction: column;">
+      <h3>Ejemplo: OnBlur</h3>
+      <p>Escribe <i>El Quijote</i> en el campo de texto, cuando te canses, haz clic fuera.</p>
+      <textarea name="entradaTexto" id="entradaTexto" cols="80" rows="25"
+        onblur="keepWriting()">En un lugar de la mancha de cuyo nombre no quiero acordarme</textarea>
+    </div>
+  </div>
+
+  <script>
+    const resultPrimer = document.getElementById('resultPrimer')
+    const resultSegundo = document.getElementById('resultSegundo')
+
+    var cuentaPrimer = 0
+
+    function mouseOverPrimer() {
+      cuentaPrimer++
+      resultPrimer.innerHTML = `Has pasado ${cuentaPrimer} veces por el cuadro rojo o alguno de sus hijos`
+    }
+
+    function mouseOverSegundo() {
+      resultSegundo.innerHTML = "Se que estas SOBRE la imagen."
+    }
+
+    function mouseOutSegundo() {
+      resultSegundo.innerHTML = "Se que TE HAS IDO DE la imagen."
+    }
+
+    function keepWriting() {
+      alert("Te crees que te ibas a escapar? SIGUE ESCRIBIENDO")
+    }
+  </script>
+</body>
+
+</html>

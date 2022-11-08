@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 8</title>
+</head>
+<body>
+  <h1>Actividad 8 - Carlos Moran</h1>
+  <p><i>Realiza un script que extraiga el mes y el año de una fecha concreta</i></p>
+  <hr>
+  <form action="fechaInput">Introduce una fecha</form>
+  <input type="date" name="fechaInput" id="fechaInput">
+  <button id="calc">Calcular</button>
+  <p>Resultado = { mes: " <span id="resultMes"></span> ", año: " <span id="resultYear"></span> " }</p>
+
+  <script>
+    function cualMes(mes) {
+      const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+      return meses[mes]
+    }
+    document.getElementById('calc').onclick = () => {
+      var dateInput = document.getElementById('fechaInput').value 
+      var date = new Date(dateInput)
+      var mes = cualMes(date.getMonth())
+      var year = date.getFullYear()
+
+      document.getElementById('resultMes').innerHTML = `${mes}`
+      document.getElementById('resultYear').innerHTML = `${year}`
+    }
+  </script>
+</body>
+</html>
