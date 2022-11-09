@@ -15,9 +15,28 @@
       y no nos restringe guardar un string, un int, o incluso otro array.
     </p>
     <p><b>Valor de </b><code>milista[2][2]</code>: <span id="result1"></span></p>
+    <p><b>Contenido de milista:</b> <span id="resultLista"></span></p>
     <script>
       var miLista = ['panadero', 456, [0, 1, 2]]
       document.getElementById('result1').innerHTML = miLista[2][2]
+
+      var content = "";
+      function showObj(obj) {
+        obj.forEach(v => {
+          content += `${v}, `
+        });
+      }
+
+      miLista.forEach((v, k) => {
+        console.log(k,v)
+        if (typeof(v) == "object") {
+          showObj(v)
+        } else {
+          content += `${v}, `
+        }
+      }) 
+
+      document.getElementById('resultLista').innerHTML = content
     </script>
 </body>
 </html>
