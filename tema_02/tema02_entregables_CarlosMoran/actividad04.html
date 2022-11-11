@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 4</title>
+</head>
+
+<body>
+  <h1>Actividad 4 - Carlos Moran</h1>
+  <p><i>Verifica que funciona el código empleado en este apartado en un navegador y muestra el resultado
+      anteriormente expuesto. Al mismo tiempo, modifica el código y añade variantes de tu cosecha
+      para intentar conocer mejor cómo funcionan los arrays y los bucles</i></p>
+    <hr>
+
+  <p><b>foreach:</b> <span id="result1"></span></p>
+  <p><b>for clasico:</b> <span id="result2"></span></p>
+
+  <script>
+    const nombres = ["manu", "javi", "carlos", "juande"]
+
+    nombres.forEach((v,k) => {
+      document.getElementById('result1').innerHTML += `${v}, `
+    })
+
+    for (let i = 0; i < nombres.length; i++) {
+      document.getElementById('result2').innerHTML += `${nombres[i]}, `
+    }
+  </script>
+</body>
+
+</html>

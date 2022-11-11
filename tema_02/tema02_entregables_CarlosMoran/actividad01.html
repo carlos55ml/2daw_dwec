@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 1</title>
+</head>
+<body>
+  <h1>Actividad 1 - Carlos Moran</h1>
+  <p><i>Vista la función suma, realiza la función resta, multiplicación
+    y división.</i></p>
+  <hr>
+  <p>
+    Valor 1 = 29. <br>
+    Valor 2 = 8.
+  </p>
+  <p><b>Resultado suma:</b> <span id="resultSuma"></span></p>
+  <p><b>Resultado resta:</b> <span id="resultResta"></span></p>
+  <p><b>Resultado multiplicacion:</b> <span id="resultMulti"></span></p>
+  <p><b>Resultado division:</b> <span id="resultDiv"></span></p>
+
+  <script>
+    const valor1 = 29
+    const valor2 = 8
+
+    function suma(a,b) {
+      return a + b
+    }
+    function resta(a,b) {
+      return a-b
+    }
+    function multiplicacion(a,b){
+      return a*b
+    }
+    function division(a,b) {
+      return a/b
+    }
+
+    document.getElementById('resultSuma').innerHTML = suma(valor1, valor2)
+    document.getElementById('resultResta').innerHTML = resta(valor1, valor2)
+    document.getElementById('resultMulti').innerHTML = multiplicacion(valor1, valor2)
+    document.getElementById('resultDiv').innerHTML = division(valor1, valor2)
+  </script>
+</body>
+</html>

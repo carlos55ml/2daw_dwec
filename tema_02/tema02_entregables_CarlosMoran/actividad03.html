@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 3</title>
+</head>
+<body>
+  <h1>Actividad 3 - Carlos Moran</h1>
+  <p><i>En caso de que funcione el ejemplo de este apartado, cambia el formato de la fecha
+    para que aparezca como el siguiente: dd/mm/yyyy</i></p>
+  <hr>
+
+  <p><span id="result"></span></p>
+
+  <script>
+    const fechaHoy = new Date(Date.now())
+    const dia = fechaHoy.getDate()
+    const mes = fechaHoy.getMonth()
+    const year = fechaHoy.getFullYear()
+
+    const str = `${dia}/${mes}/${year}`
+
+    document.getElementById('result').innerHTML = str
+  </script>
+</body>
+</html>

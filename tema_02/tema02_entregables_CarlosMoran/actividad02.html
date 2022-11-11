@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 2</title>
+</head>
+<body>
+  <h1>Actividad 2 - Carlos Moran</h1>
+  <p><i>Crea una página web con un script que contenga un objeto de la clase persona,
+    la cual tendrá los siguientes atributos:</i></p>
+  <hr>
+
+  <p><span id="result"></span></p>
+
+  <script>
+    const persona = {
+      nombre: "Dimas",
+      edad: 28,
+      altura: 185
+    }
+
+    document.getElementById('result').innerHTML = `El usuario ${persona.nombre} tiene ${persona.edad} años y mide ${persona.altura} centimetros.`
+  </script>
+</body>
+</html>
