@@ -1,16 +1,17 @@
 const nombreInput = document.getElementById('nombreInput')
-const genderInput = document.getElementsByName('genero')
 const makeHistoryBtn = document.getElementById('makeHistory')
 
 const resultBox = document.getElementById('result')
 
-function genRand(ini, limit) {
-  return Math.random(ini, limit)
+function genRand(min, max) {
+  let horquilla = max - min;
+  let aleatorio = Math.round(Math.random() * horquilla) + min;
+  return aleatorio;
 }
 
 function coolHistory(nombre, genero) {
   var trato = []
-  if (genero == 'm') {
+  if (genero == "h") {
     trato = ["el", "un", "hombre", "lo", "o"]
   } else {
     trato = ["ella", "una", "mujer", "la", "a"]
@@ -36,10 +37,12 @@ function coolHistory(nombre, genero) {
     `${trato[3]} acabo persiguiendo la interpol y ${nombre} tuvo que refugiarse en Turquia.`
   ]
 
-  resultBox.innerHTML = presentacion[genRand(0, presentacion.length-1)] + plot[genRand(0, plot.length-1)] + plotTwist[genRand(0, plotTwist.length-1)] + desenlace[genRand(0, desenlace.length-1)]
+  resultBox.innerHTML = "" + presentacion[genRand(0, presentacion.length-1)] + plot[genRand(0, plot.length-1)] + plotTwist[genRand(0, plotTwist.length-1)] + desenlace[genRand(0, desenlace.length-1)]
 
 }
 
 makeHistoryBtn.onclick = () => {
-  coolHistory(nombreInput.value, genderInput.value)
+  var gender = document.querySelector('input[name="genero"]:checked').value;
+  console.log(gender)
+  coolHistory(nombreInput.value, gender)
 }
